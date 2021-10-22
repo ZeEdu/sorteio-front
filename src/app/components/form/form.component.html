@@ -1,0 +1,18 @@
+<mat-card>
+  <form (ngSubmit)="onSubmit()" #form="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput type="text" name="name" [(ngModel)]="name" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" name="email" [(ngModel)]="email" />
+    </mat-form-field>
+
+    <div *ngIf="errors">
+      <p style="color: #f44336" *ngFor="let err of errors">{{ err }}</p>
+    </div>
+
+    <button mat-raised-button color="primary" type="submit">Enviar</button>
+  </form>
+</mat-card>
