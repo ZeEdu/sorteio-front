@@ -2,51 +2,53 @@
   <span>Amigo Secreto Online</span>
 </mat-toolbar>
 
-<section class="container">
-  <app-form (emitReload)="handleEmitReload()"> </app-form>
-</section>
+<main>
+  <section class="container">
+    <app-form (emitReload)="handleEmitReload()"> </app-form>
+  </section>
 
-<section class="container">
-  <div style="display: flex; flex-direction: column">
-    <button
-      mat-flat-button
-      color="accent"
-      (click)="handleSorting()"
-      [disabled]="loading"
-    >
-      <ng-container *ngIf="loading; else elseBlock">
-        Realizando o Sorteio. Por Favor, aguarde alguns segundos.
-      </ng-container>
-      <ng-template #elseBlock>Realizar Sorteio</ng-template>
-    </button>
-  </div>
-</section>
+  <section class="container">
+    <div style="display: flex; flex-direction: column">
+      <button
+        mat-flat-button
+        color="accent"
+        (click)="handleSorting()"
+        [disabled]="loading"
+      >
+        <ng-container *ngIf="loading; else elseBlock">
+          Realizando o Sorteio. Por Favor, aguarde alguns segundos.
+        </ng-container>
+        <ng-template #elseBlock>Realizar Sorteio</ng-template>
+      </button>
+    </div>
+  </section>
 
-<section class="container">
-  <ng-container *ngIf="listUsers.length > 0">
-    <app-display-user
-      *ngFor="let user of listUsers"
-      [user]="user"
-      (emitReload)="handleEmitReload()"
-    >
-    </app-display-user>
-  </ng-container>
-  <div class="pageButtonsContainer">
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="page === 0"
-      (click)="previousPage()"
-    >
-      Página Anterior
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      [disabled]="listUsers.length < 10"
-      (click)="nextPage()"
-    >
-      Próxima Página
-    </button>
-  </div>
-</section>
+  <section class="container">
+    <ng-container *ngIf="listUsers.length > 0">
+      <app-display-user
+        *ngFor="let user of listUsers"
+        [user]="user"
+        (emitReload)="handleEmitReload()"
+      >
+      </app-display-user>
+    </ng-container>
+    <div class="pageButtonsContainer">
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="page === 0"
+        (click)="previousPage()"
+      >
+        Página Anterior
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="listUsers.length < 10"
+        (click)="nextPage()"
+      >
+        Próxima Página
+      </button>
+    </div>
+  </section>
+</main>

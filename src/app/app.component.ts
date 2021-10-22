@@ -67,13 +67,12 @@ export class AppComponent implements OnInit {
           this._snackBar.open('Sorteio criado com sucesso', 'Entendido', {
             duration: 3000,
           });
+          this.loading = false;
         },
         (err) => {
           this._snackBar.open(err.error.error[0], 'Entendido', {
             duration: 3000,
           });
-        },
-        () => {
           this.loading = false;
         }
       );

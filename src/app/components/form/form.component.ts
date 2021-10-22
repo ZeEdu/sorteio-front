@@ -93,7 +93,7 @@ export class FormComponent implements OnInit, OnDestroy {
       .subscribe(
         () => {
           this._snackBar.open('Usuário criado com sucesso', 'Entendido', {
-            duration: 5,
+            duration: 3000,
           });
           this.emitReload.emit();
         },

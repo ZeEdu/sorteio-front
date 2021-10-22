@@ -15,8 +15,6 @@ export class DisplayUserComponent implements OnInit {
   user!: User;
   @Output() emitReload = new EventEmitter();
 
-  loading: boolean = false;
-
   constructor(
     private userService: UserService,
     private currentUserService: CurrentUserService,
@@ -31,7 +29,6 @@ export class DisplayUserComponent implements OnInit {
 
   triggerExclude() {
     if (this.user.id) {
-      this.loading = true;
       this.userService
         .deleteUser(this.user.id)
         .pipe(take(1))
@@ -50,9 +47,6 @@ export class DisplayUserComponent implements OnInit {
                 duration: 3000,
               }
             );
-          },
-          () => {
-            this.loading = false;
           }
         );
     }
