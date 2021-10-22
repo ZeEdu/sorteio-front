@@ -71,8 +71,6 @@ export class FormComponent implements OnInit, OnDestroy {
   }
 
   updateUser(id: string, name: string, email: string) {
-    // console.log('Entrou em user update');
-
     this.userService
       .updateUser(id, name, email)
       .pipe(take(1))

@@ -64,7 +64,6 @@ export class AppComponent implements OnInit {
       .pipe(take(1))
       .subscribe(
         (data) => {
-          console.log(data);
           this._snackBar.open('Sorteio criado com sucesso', 'Entendido', {
             duration: 3000,
           });
