@@ -38,7 +38,7 @@ export class DisplayUserComponent implements OnInit {
         .subscribe(
           (data) => {
             this._snackBar.open('Usuário deletado com sucesso', 'Entendido', {
-              duration: 5,
+              duration: 3000,
             });
             this.emitReload.emit();
           },
@@ -47,7 +47,7 @@ export class DisplayUserComponent implements OnInit {
               'Um erro ocorreu. Tente novamente',
               'Entendido',
               {
-                duration: 5,
+                duration: 3000,
               }
             );
           },

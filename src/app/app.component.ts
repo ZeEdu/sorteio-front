@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
 import User from './models/User';
+import { SortingService } from './services/sorting.service';
 import { UserService } from './services/user.service';
 
 @Component({
@@ -16,7 +18,11 @@ export class AppComponent implements OnInit {
   public listUsers: User[] = [];
   public currentUser: User | null = null;
 
-  constructor(private userService: UserService) {}
+  constructor(
+    private userService: UserService,
+    private sortingService: SortingService,
+    private _snackBar: MatSnackBar
+  ) {}
 
   handleEmitReload() {
     this.page = 0;
@@ -34,24 +40,44 @@ export class AppComponent implements OnInit {
 
   loadUsers() {
     this.error = null;
-    this.loading = true;
 
     this.userService
       .getUsers(this.page)
       .pipe(take(1))
       .subscribe(
         (data) => {
-          console.log(data);
           this.listUsers = [...data.users];
         },
-
-        (err) => (this.error = err.message),
-        () => (this.loading = false)
+        (err) => (this.error = err.message)
       );
   }
 
   handleEditar(user: User) {
     this.currentUser = user;
+  }
+
+  handleSorting() {
+    this.error = null;
+    this.loading = true;
+    this.sortingService
+      .triggerSorting()
+      .pipe(take(1))
+      .subscribe(
+        (data) => {
+          console.log(data);
+          this._snackBar.open('Sorteio criado com sucesso', 'Entendido', {
+            duration: 3000,
+          });
+        },
+        (err) => {
+          this._snackBar.open(err.error.error[0], 'Entendido', {
+            duration: 3000,
+          });
+        },
+        () => {
+          this.loading = false;
+        }
+      );
   }
 
   ngOnInit(): void {

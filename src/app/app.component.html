@@ -8,12 +8,22 @@
 
 <section class="container">
   <div style="display: flex; flex-direction: column">
-    <button mat-flat-button color="accent">Realizar Sorteio</button>
+    <button
+      mat-flat-button
+      color="accent"
+      (click)="handleSorting()"
+      [disabled]="loading"
+    >
+      <ng-container *ngIf="loading; else elseBlock">
+        Realizando o Sorteio. Por Favor, aguarde alguns segundos.
+      </ng-container>
+      <ng-template #elseBlock>Realizar Sorteio</ng-template>
+    </button>
   </div>
 </section>
 
 <section class="container">
-  <ng-container *ngIf="listUsers.length > 0 && loading === false">
+  <ng-container *ngIf="listUsers.length > 0">
     <app-display-user
       *ngFor="let user of listUsers"
       [user]="user"

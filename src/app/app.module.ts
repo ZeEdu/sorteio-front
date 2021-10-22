@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { FormComponent } from './components/form/form.component';
 import { DisplayUserComponent } from './components/display-user/display-user.component';
@@ -28,7 +28,7 @@ import { DisplayUserComponent } from './components/display-user/display-user.com
     MatInputModule,
     MatFormFieldModule,
     MatSnackBarModule,
-    MatTableModule,
+    MatProgressSpinnerModule,
     HttpClientModule,
     FormsModule,
   ],
