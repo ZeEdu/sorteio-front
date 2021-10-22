@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://sorteio-backend.herokuapp.com/api',
 };
